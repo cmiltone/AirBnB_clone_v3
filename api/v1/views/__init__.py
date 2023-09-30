@@ -2,7 +2,7 @@
 """
 module for views
 """
-from flask.doc import Blueprint
+from flask import Blueprint
 
 
 app_views = Blueprint('app', __name__, url_prefix='/api/v1')
