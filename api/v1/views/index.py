@@ -29,7 +29,7 @@ def show_stats():
         "users": users
     })
 
-@app.errorhandler(404)
+@app_views.errorhandler(404)
 def show_404(exception):
     return jsonify({
         "error": "Not found"
