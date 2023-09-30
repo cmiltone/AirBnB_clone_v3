@@ -11,6 +11,7 @@ from models import storage
 def show_status():
     return jsonify({"status": "OK"})
 
+
 @app_views.route('/stats')
 def show_status():
     amenities = storage.count('Amenity')
@@ -20,10 +21,10 @@ def show_status():
     states = storage.count('State')
     users = storage.count('User')
     return jsonify({
-        "amenities": amenities, 
-        "cities": cities, 
-        "places": places, 
+        "amenities": amenities,
+        "cities": cities,
+        "places": places,
         "reviews": reviews, 
-        "states": states, 
+        "states": states,
         "users": users
     })
