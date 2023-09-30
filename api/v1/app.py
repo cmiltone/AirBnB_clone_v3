@@ -13,14 +13,16 @@ port = getenv("HBNB_API_PORT")
 app = Flask(__name__)
 app.register_blueprint(app_views)
 
+
 @app.teardown_appcontext
 def teardown_storage(eception):
     storage.close()
+
 
 if __name__ == "__main__":
     if port is None:
         port = 5000
     if host is None:
         host = "0.0.0.0"
-    
+
     app.run(host=host, port=port, threaded=True)
