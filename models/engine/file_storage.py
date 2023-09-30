@@ -86,4 +86,3 @@ class FileStorage:
                     count += 1
             return count
         return len(self.__objects.keys())
-
