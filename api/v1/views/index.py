@@ -13,7 +13,7 @@ def show_status():
 
 
 @app_views.route('/stats')
-def show_status():
+def show_stats():
     amenities = storage.count('Amenity')
     cities = storage.count('City')
     places = storage.count('Place')
