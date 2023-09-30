@@ -19,6 +19,13 @@ def teardown_storage(eception):
     storage.close()
 
 
+@app.errorhandler(404)
+def show_404(exception):
+    return jsonify({
+        "error": "Not found"
+    })
+
+
 if __name__ == "__main__":
     if port is None:
         port = 5000
