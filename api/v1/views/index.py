@@ -24,7 +24,7 @@ def show_status():
         "amenities": amenities,
         "cities": cities,
         "places": places,
-        "reviews": reviews, 
+        "reviews": reviews,
         "states": states,
         "users": users
     })
