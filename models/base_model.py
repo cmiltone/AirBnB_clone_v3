@@ -72,3 +72,19 @@ class BaseModel:
     def delete(self):
         """delete the current instance from the storage"""
         models.storage.delete(self)
+
+    def update(self, attr_dict=None):
+        """
+            updates the basemodel
+        """
+        IGNORE = [
+            'id', 'created_at', 'updated_at', 'email',
+            'state_id', 'user_id', 'city_id', 'place_id'
+        ]
+        if attr_dict:
+            updated_dict = {
+                k: v for k, v in attr_dict.items() if k not in IGNORE
+            }
+            for key, value in updated_dict.items():
+                setattr(self, key, value)
+            self.save()
