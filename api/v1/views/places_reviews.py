@@ -9,7 +9,7 @@ from models.review import Review
 
 
 @app_views.route('/places/<place_id>/reviews', methods=['GET', 'POST'], strict_slashes=False)
-def reviews():
+def reviews(place_id=None):
     """reviews route"""
     if request.method == 'GET':
         _reviews = storage.all('Review')
@@ -26,6 +26,7 @@ def reviews():
             abort(400, 'Missing name')
         if json.get('text') is None:
             abort(400, 'Missing text')
+        json['place_id'] = place_id
         obj = Review(**json)
         obj.save()
         return jsonify(obj.to_dict()), 201
