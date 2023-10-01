@@ -5,7 +5,7 @@ module creates amenity route
 from flask import jsonify, request, abort
 from api.v1.views import app_views
 from models import storage
-from models.state import Amenity
+from models.amenity import Amenity
 
 
 @app_views.route('/amenities', methods=['GET', 'POST'], strict_slashes=False)
