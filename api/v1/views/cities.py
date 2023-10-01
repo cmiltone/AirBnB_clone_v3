@@ -28,8 +28,8 @@ def states_cities(state_id=None):
     if request.method == 'GET':
         all_cities = storage.all(City)
         cities = []
-        for city in all_cities:
-            if city.get('state_id') == state_id:
+        for city in all_cities.values():
+            if city.to_dict().get('state_id') == state_id:
                 cities.append(city.to_dict())
         return jsonify(cities), 200
     if request.method == 'POST':
