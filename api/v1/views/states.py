@@ -50,4 +50,3 @@ def state_id(state_id=None):
             abort(400, 'Not a JSON')
         obj.update(json)
         return jsonify(obj.to_dict()), 200
-    
