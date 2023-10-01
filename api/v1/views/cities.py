@@ -18,6 +18,7 @@ def cities():
         cities_list.append(city.to_dict())
     return jsonify(cities_list)
 
+
 @app_views.route('/states/<state_id>/cities', methods=['GET', 'POST'],
                  strict_slashes=False)
 def states_cities(state_id=None):
@@ -42,6 +43,7 @@ def states_cities(state_id=None):
         obj = City(**json)
         obj.save()
         return jsonify(obj.to_dict()), 201
+
 
 @app_views.route('/cities/<city_id>', methods=['GET', 'DELETE', 'PUT'],
                  strict_slashes=False)
