@@ -27,8 +27,8 @@ def places(city_id=None):
         json = request.get_json()
         if json is None:
             abort(400, 'Not a JSON')
-        if json.get('name') is None:
-            abort(400, 'Missing name')
+        if json.get('user_id') is None:
+            abort(400, 'Missing user_id')
         json['city_id'] = city_id
         obj = Place(**json)
         obj.save()
