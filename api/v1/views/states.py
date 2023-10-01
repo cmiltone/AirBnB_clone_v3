@@ -8,13 +8,13 @@ from models import storage
 from models.state import State
 
 
-@app_views.route('/states', methods=['GET', 'POST'])
+@app_views.route('/states', methods=['GET', 'POST'], strict_slashes=False)
 def states():
     """states route"""
     if request.method == 'GET':
-        states = storage.all('State')
+        _states = storage.all('State')
         states_list = []
-        for state in states.values():
+        for state in _states.values():
             states_list.append(state.to_dict())
         return jsonify(states_list)
 
@@ -29,7 +29,8 @@ def states():
         return jsonify(obj.to_dict()), 201
 
 
-@app_views.route('/states/<state_id>', methods=['GET', 'DELETE', 'PUT'])
+@app_views.route('/states/<state_id>', methods=['GET', 'DELETE', 'PUT'],
+                 strict_slashes=False)
 def state_id(state_id=None):
     """state with id route"""
     obj = storage.get(State, state_id)
