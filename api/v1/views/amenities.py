@@ -29,11 +29,11 @@ def amenities():
         return jsonify(obj.to_dict()), 201
 
 
-@app_views.route('/amenities/<state_id>', methods=['GET', 'DELETE', 'PUT'],
+@app_views.route('/amenities/<amenity_id>', methods=['GET', 'DELETE', 'PUT'],
                  strict_slashes=False)
-def state_id(state_id=None):
+def amenity_id(amenity_id=None):
     """state with id route"""
-    obj = storage.get(Amenity, state_id)
+    obj = storage.get(Amenity, amenity_id)
     if obj is None:
         abort(404, 'Not found')
 
