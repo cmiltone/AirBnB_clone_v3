@@ -15,7 +15,7 @@ def states():
         states = storage.all('State')
         states_list = []
         for state in states.values():
-            states_list.append(state.to_json())
+            states_list.append(state.to_dict())
         return jsonify(states_list)
 
     if request.method == 'POST':
@@ -37,7 +37,7 @@ def state_id(id=None):
         abort(404, 'Not found')
 
     if request.method == 'GET':
-        return jsonify(obj.to_json())
+        return jsonify(obj.to_dict())
 
     if request.method == 'DELETE':
         obj.delete()
@@ -49,5 +49,5 @@ def state_id(id=None):
         if json is None:
             abort(400, 'Not a JSON')
         obj.update(json)
-        return jsonify(obj.to_json()), 200
+        return jsonify(obj.to_dict()), 200
     
