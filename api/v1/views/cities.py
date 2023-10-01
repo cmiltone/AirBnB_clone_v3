@@ -38,8 +38,8 @@ def states_cities(state_id=None):
             abort(400, 'Not a JSON')
         if json.get('name') is None:
             abort(400, 'Missing name')
+        json['state_id'] = state_id
         obj = City(**json)
-        obj.state_id = state_id
         obj.save()
         return jsonify(obj.to_dict()), 201
 
