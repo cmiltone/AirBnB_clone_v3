@@ -30,9 +30,9 @@ def states():
 
 
 @app_views.route('/states/<state_id>', methods=['GET', 'DELETE', 'PUT'])
-def state_id(id=None):
+def state_id(state_id=None):
     """state with id route"""
-    obj = storage.get('State', id)
+    obj = storage.get('State', state_id)
     if obj is None:
         abort(404, 'Not found')
 
