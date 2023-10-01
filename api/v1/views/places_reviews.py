@@ -6,6 +6,7 @@ from flask import jsonify, request, abort
 from api.v1.views import app_views
 from models import storage
 from models.review import Review
+from models.user import User
 
 
 @app_views.route('/places/<place_id>/reviews', methods=['GET', 'POST'], strict_slashes=False)
@@ -22,10 +23,13 @@ def reviews(place_id=None):
         json = request.get_json()
         if json is None:
             abort(400, 'Not a JSON')
-        if json.get('name') is None:
-            abort(400, 'Missing name')
+        if json.get('user_id') is None:
+            abort(400, 'Missing user_id')
         if json.get('text') is None:
             abort(400, 'Missing text')
+        user = storage.get(User, json.get('user_id'))
+        if user is None:
+            abort(404, 'Not found')
         json['place_id'] = place_id
         obj = Review(**json)
         obj.save()
