@@ -22,8 +22,10 @@ def users():
         json = request.get_json()
         if json is None:
             abort(400, 'Not a JSON')
-        if json.get('name') is None:
-            abort(400, 'Missing name')
+        if json.get('email') is None:
+            abort(400, 'Missing email')
+        if json.get('password') is None:
+            abort(400, 'Missing password')
         obj = User(**json)
         obj.save()
         return jsonify(obj.to_dict()), 201
