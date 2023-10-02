@@ -45,15 +45,12 @@ def place_amenities(place_id=None, amenity_id=None):
                     found = True
             if not found:
                 place.amenity_ids.append(amenity_id)
-        # obj = Place(**place.to_dict())
-        print("here1...")
         if found:
             status = 200
         else:
             place.save()
             status = 201
-        print("here2...")
-        return jsonify(place.to_dict()), status
+        return jsonify(amenity.to_dict()), status
 
     if request.method == 'DELETE':
         found = False
