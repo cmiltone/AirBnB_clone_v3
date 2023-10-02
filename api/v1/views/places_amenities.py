@@ -45,8 +45,8 @@ def place_amenities(place_id=None, amenity_id=None):
                     found = True
             if not found:
                 place.amenity_ids.append(amenity_id)
-        obj = Place(**place.to_dict())
-        obj.save()
+        # obj = Place(**place.to_dict())
+        place.save()
         status = 201
         if found:
             status = 200
