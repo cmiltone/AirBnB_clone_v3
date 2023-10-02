@@ -38,7 +38,7 @@ def place_amenities(place_id=None, amenity_id=None):
                 if a.id == amenity_id:
                     found = True
             if not found:
-                place.amenities.append(amenity)
+                place.amenities.append(amenity_id)
         else:
             for a in place.amenities:
                 if a.id == amenity_id:
